@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { getMovieDetails, getTmdbImageUrl } from '../api/tmdb';
 import type { Movie } from '../types/movie';
 
-// 미션 2 요구사항: react-router-dom 으로 /movies/:movieId 라우팅 (디자인은 최소)
+// /movies/:movieId 라우트. 새로고침/딥링크로 진입해도 id 기준으로 상세를 조회한다.
 function MovieDetailPage() {
   const { movieId } = useParams<{ movieId: string }>();
   const [movie, setMovie] = useState<Movie | null>(null);
@@ -48,8 +48,6 @@ function MovieDetailPage() {
         >
           ← 홈으로
         </Link>
-
-        <p className="text-xs text-[#8d8477]">현재 라우트: /movies/{movieId}</p>
 
         {isLoading && <p className="text-[#d0c7b8]">불러오는 중…</p>}
         {errorMessage && (
